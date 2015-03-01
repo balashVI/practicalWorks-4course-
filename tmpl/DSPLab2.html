@@ -1,0 +1,44 @@
+{{define "content"}}
+<div class="row">
+    <div class="col-md-6">
+        <form>
+            <div class="form-group">
+                <label>Перший вектор</label>
+                <input type="text" class="form-control" id="vec1" value="6 4 0 1 2 3 6 4 0 3 8 7">
+                <label>Другий вектор</label>
+                <input type="text" class="form-control" id="vec2" value="4 0 8 2 7 3">
+                <label>Коефіцієнт масштабування</label>
+                <input type="text" class="form-control" id="scaling" value="2">
+                <label>Коефіцієнт зсуву</label>
+                <input type="text" class="form-control" id="shift" value="2">
+                <label>Коефіцієнт розширення</label>
+                <input type="text" class="form-control" id="timeScaling" value="2">
+                <br>
+                <button type="button" class="btn btn-primary btn-lg btn-block" onclick="sendData()">Обчислити</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6 ">
+        <label>Результати обчислень</label>
+        <textarea type="text" class="form-control" rows="16" name="inputData" disabled="true" id="res"></textarea>
+    </div>
+</div>
+<div class="row">
+    <h4 class="col-md-6">Перший сигнал</h4>
+    <h4 class="col-md-6">Другий сигнал</h4>
+    <canvas id="vec1chart" height="150" class="col-md-6"></canvas>
+    <canvas id="vec2chart" height="150" class="col-md-6"></canvas>
+    <h4 class="col-md-6">Результат масштабування першого сигнала</h4>
+    <h4 class="col-md-6">Результат реверсу першого сигнала</h4>
+    <canvas id="scalingChart" height="150" class="col-md-6"></canvas>
+    <canvas id="reversChart" height="150" class="col-md-6"></canvas>
+    <h4 class="col-md-6">Результат зсуву першого сигнала</h4>
+    <h4 class="col-md-6">Результат розширення першого сигнала</h4>
+    <canvas id="shiftChart" height="150" class="col-md-6"></canvas>
+    <canvas id="timeScalingChart" height="150" class="col-md-6"></canvas>
+    <h4 class="col-md-6">Результат додавання сигналів</h4>
+    <h4 class="col-md-6">Результат множення сигналів</h4>
+    <canvas id="addChart" height="150" class="col-md-6"></canvas>
+    <canvas id="mulChart" height="150" class="col-md-6"></canvas>
+</div>
+{{end}}

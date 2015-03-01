@@ -1,0 +1,15 @@
+{{define "content"}}
+<div class="panel-group " id="accordion" role="tablist" aria-multiselectable="true">
+	{{range .}}
+	<div class="panel panel-default">
+		<div class="panel-heading">{{.Name}}</div>
+	
+		<ul class="list-group">
+			{{range .Labs}}
+			<a class="list-group-item" href="{{.Link}}">{{.Name}}</a>
+			{{end}}
+		</ul>
+	</div>
+	{{end}}
+</div>
+{{end}}

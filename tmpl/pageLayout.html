@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{.Title}}</title>
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/css/my.css">
+	{{range .JSLinks}}
+	<script type="text/javascript" src="{{.}}"></script>
+	{{end}}
+</head>
+<body>
+<h4><a href="/" class="btn">Головна</a></h4>
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<div class="page-header">
+				<h2>{{.PageHeader}}</h2>
+			</div>
+			{{template "content" .Content}}
+		</div>
+	</div>
+</body>
+</html>

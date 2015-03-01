@@ -1,0 +1,34 @@
+{{define "content"}}
+<script>
+	function sendData(){
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange=function()
+		{
+			if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			{
+				document.getElementById("res").innerHTML=xmlhttp.responseText;
+			}
+		}
+		xmlhttp.open("GET","/DSP/lab1Calc?vec1="+document.getElementById("vec1").value+";vec2="+document.getElementById("vec2").value,true);
+		xmlhttp.send();
+	}
+</script>
+<div class="row">
+	<div class="col-md-6">
+		<form>
+			<div class="form-group">
+				<label>Перший вектор</label>
+				<input type="text" class="form-control" id="vec1" value="3 5 7">
+				<label>Другий вектор</label>
+				<input type="text" class="form-control" id="vec2" value="6 3 3">
+				<br>
+				<button type="button" class="btn btn-primary btn-lg btn-block" onclick="sendData()">Обчислити</button>
+			</div>
+		</form>
+	</div>
+	<div class="col-md-6 ">
+		<label>Результати обчислень</label>
+		<textarea type="text" class="form-control" rows="7" name="inputData" disabled="true" id="res"></textarea>
+	</div>
+</div>
+{{end}}
