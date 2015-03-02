@@ -1,0 +1,110 @@
+{{define "content"}}
+<div class="row">
+    <div class="col-md-6">
+        <img src="/img/numbers.jpg" alt="Числа" class="img-thumbnail">
+        <table class="table">
+            <caption>Таблиця ознак і категорій</caption>
+            <thead>
+                <tr>
+                    <th>Цифра</th>
+                    <th>Кількість вертикальних ліній</th>
+                    <th>Кількість горизонтальних ліній</th>
+                    <th>Кількість верхніх діагоналей ліній</th>
+                    <th>Кількість нижніх діагоналей ліній</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>0</th>
+                    <td>4</td>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th>1</th>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th>2</th>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <th>3</th>
+                    <td>0</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <th>4</th>
+                    <td>3</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th>5</th>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th>6</th>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th>7</th>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th>8</th>
+                    <td>4</td>
+                    <td>3</td>
+                    <td>0</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th>9</th>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6 ">
+        <form>
+            <div class="form-group">
+                <label>Кількість вертикальних ліній</label>
+                <input type="text" class="form-control" id="verticalLines" value="1">
+                <label>Кількість гаризонтальних ліній</label>
+                <input type="text" class="form-control" id="horizontalLines" value="1">
+                <label>Кількість верхніх діагональних ліній</label>
+                <input type="text" class="form-control" id="diagonal1Lines" value="1">
+                <label>Кількість нижніх діагональних ліній</label>
+                <input type="text" class="form-control" id="diagonal2Lines" value="1">
+                <br>
+                <button type="button" class="btn btn-primary btn-lg btn-block" onclick="analise()">Визначити цифру</button>
+            </div>
+        </form>
+        <label>Результат:</label>
+        </br>
+        <textarea id="res" class="form-control" readonly="true" rows="10"></textarea>
+    </div>
+</div>
+{{end}}
