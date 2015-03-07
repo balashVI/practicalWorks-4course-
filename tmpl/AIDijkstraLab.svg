@@ -1,0 +1,5 @@
+	{{range .Lines}}<line x1="{{.StartPoint.X}}" y1="{{.StartPoint.Y}}" x2="{{.EndPoint.X}}" y2="{{.EndPoint.Y}}" stroke="{{.StrokeColor}}" stroke-width="{{.StrokeWidth}}"/>
+	{{end}}
+
+	{{range .Circles}}<circle cx="{{.CenterPoint.X}}" cy="{{.CenterPoint.Y}}" r="{{.Radius}}" stroke="{{.StrokeColor}}" stroke-width="{{.StrokeWidth}}" fill="{{.FillColor}}" />
+  	<text x="{{.CenterPoint.X}}" y="{{.CenterPoint.Y}}" fill="{{.StrokeColor}}" text-anchor="middle" alignment-baseline="top" font-size="30px">{{.Number}}</text>{{end}}
