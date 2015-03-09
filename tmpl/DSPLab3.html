@@ -1,0 +1,61 @@
+{{define "content"}}
+<div class="row">
+    <div class="col-md-12" ng-app="myApp">
+        <form ng-controller="formController" name="userForm" ng-submit="submitForm(userForm.$valid)">
+            <div class="form-group col-md-6">
+                <label>Кількість точок у вхідному сигналі:</label>
+                <input type="number" class="form-control" ng-model="numberOfPoints" ng-change="numberOfPointsChanged()" min="2" max="100" required>
+
+                <br>
+                <label>Вхідні дані:</label>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Реальна частина</th>
+                            <th>Уявна частина</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="i in inputData">
+                            <td ng-bind="$index"></td>
+                            <td>
+                                <input class="table-input" type="number" ng-model="i.Re" step="any"></input>
+                            </td>
+                            <td>
+                                <input class="table-input" type="number" ng-model="i.Im" step="any"></input>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <select class="form-control" ng-model="mode">
+                    <option value="0">Пряме перетворення Фур’є</option>
+                    <option value="1">Обернене перетворення Фур’є</option>
+                </select>
+                <br>
+                <button type="submit" class="btn btn-primary btn-lg btn-block" ng-disabled="userForm.$invalid">Знайти шлях</button>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Результати обчислень:</label>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Реальна частина</th>
+                            <th>Уявна частина</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="i in resData">
+                            <td ng-bind="$index" />
+                            <td ng-bind="i.Re" />
+                            <td ng-bind="i.Im" />
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+    </style>
+    {{end}}
