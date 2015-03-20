@@ -1,26 +1,17 @@
-function searchPath() {
-    //    var xmlhttp = new XMLHttpRequest();
-    //    xmlhttp.onreadystatechange = function () {
-    //        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-    //            document.getElementById("resPathLength").innerHTML = xmlhttp.responseText;
-    //        }
-    //    }
-    //    xmlhttp.open("GET", "/AI/DijkstraLabCalc?verticesN=" + document.getElementById("verticesN").value + ";startPoint=" + document.getElementById("startPoint").value + ";endPoint=" + document.getElementById("endPoint").value + ";edgesList=" + document.getElementById("edgesList").value, true);
-    //    xmlhttp.send();
-}
-
-angular.module('myApp', [], function ($interpolateProvider) {
+app = angular.module('myApp', []);
+app.config(function ($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
 });
 
-function formController($scope, $http) {
-    $scope.numberOfVertices = 6
+app.controller('FormController', ['$scope', '$http', function ($scope, $http) {
+    $scope.numberOfVertices = 6;
     $scope.counter = [0, 1, 2, 3, 4, 5]
     $scope.cells = [-1, 7, 9, -1, -1, 14, 7, -1, 10, 14, -1, -1, 9, 10, -1, 11, -1, 2, -1, 15, 11, -1, 6, -1, -1, -1, -1, 6, -1, 9, 14, -1, 2, -1, 9, -1]
     $scope.startPoint = 0;
     $scope.finishPoint = 4;
-    $scope.currentSlide = 0
+    $scope.currentSlide = 0;
+    $scope.slides = [];
 
     $scope.numbOfVerticesChanged = function () {
         var n = parseInt($scope.numberOfVertices);
@@ -39,7 +30,6 @@ function formController($scope, $http) {
         else
             return j * $scope.numberOfVertices + i;
     }
-    $scope.myHtml = '<h1>Hello</h1>';
 
     $scope.sliderChanged = function () {
         document.getElementById("svgContainer").innerHTML = $scope.slides[$scope.currentSlide];
@@ -55,7 +45,6 @@ function formController($scope, $http) {
             $http.get("/AI/DijkstraLabCalc?requestData=" + JSON.stringify(requestData))
                 .success(function (data, status, headers, config) {
                     $scope.currentSlide = 0
-                    console.log(data);
                     $scope.startPoint = data.StartPoint;
                     $scope.finishPoint = data.FinishPoint;
                     $scope.cells = data.EdgesMatrix;
@@ -71,4 +60,4 @@ function formController($scope, $http) {
         }
 
     };
-}
+}]);

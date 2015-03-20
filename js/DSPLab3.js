@@ -57,4 +57,32 @@ function formController($scope, $http) {
                 });
         }
     }
+
+    $http.get("/DSP/lab3Calc2").success(function (data, status, headers, config) {
+        createChart(data.InpSignal1, data.Time, "inp1chart");
+        createChart(data.ResSignal1, data.Frequency, "res1chart");
+        createChart(data.InpSignal2, data.Time, "inp2chart");
+        createChart(data.ResSignal2, data.Frequency, "res2chart");
+    });
+}
+
+function createChart(dataVector, labelsList, canvasId) {
+    var inpData = new Array(dataVector.length);
+    for (var i = 0; i < dataVector.length; i++)
+        inpData[i] = Math.sqrt(dataVector[i].Re * dataVector[i].Re + dataVector[i].Im * dataVector[i].Im)
+
+    new Chart(document.getElementById(canvasId).getContext("2d")).Line({
+        labels: labelsList,
+        datasets: [
+            {
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(151,187,205,1)",
+                data: inpData
+        }
+    ]
+    }, null);
 }

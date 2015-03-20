@@ -6,6 +6,10 @@ function sendData() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            if (xmlhttp.responseText[0]!="{"){
+                document.getElementById("res").innerHTML = xmlhttp.responseText
+                return
+            }
             var res = JSON.parse(xmlhttp.responseText)
             document.getElementById("res").innerHTML = "Перший сигнал: " + res.Vector1 +
                 "\nДругий сигнал: " + res.Vector2 + "\nКоефіцієнт масштабування: " + res.Scaling +

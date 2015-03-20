@@ -10,8 +10,8 @@ import (
 )
 
 func DSPLab2(writer http.ResponseWriter, request *http.Request) {
-	DSPLab1Page := template.Must(template.ParseFiles("tmpl/pageLayout.html", "tmpl/DSPLab2.html"))
-	DSPLab1Page.Execute(writer, Page{"Цифрова обробка сигналів Лаб. 2",
+	DSPLab2Page := template.Must(template.ParseFiles("tmpl/pageLayout.html", "tmpl/DSPLab2.html"))
+	DSPLab2Page.Execute(writer, Page{"Цифрова обробка сигналів Лаб. 2",
 		"Цифрова обробка сигналів Лаб. 2", []string{"/js/DSPLab2.js", "/js/Chart.js"}, nil})
 }
 

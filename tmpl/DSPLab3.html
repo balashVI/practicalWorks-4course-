@@ -1,5 +1,15 @@
 {{define "content"}}
 <div class="row">
+    <label class="col-md-6">Перший вхідний сигнал</label>
+    <label class="col-md-6">Результат дискретного перертворення Фур’є першого сигналу</label>
+    <canvas id="inp1chart" height="140" class="col-md-6"></canvas>
+    <canvas id="res1chart" height="140" class="col-md-6"></canvas>
+    <label class="col-md-6">Другий вхідний сигнал</label>
+    <label class="col-md-6">Результат дискретного перертворення Фур’є другого сигналу</label>
+    <canvas id="inp2chart" height="140" class="col-md-6"></canvas>
+    <canvas id="res2chart" height="140" class="col-md-6"></canvas>
+</div>
+<div class="row">
     <div class="col-md-12" ng-app="myApp">
         <form ng-controller="formController" name="userForm" ng-submit="submitForm(userForm.$valid)">
             <div class="form-group col-md-6">

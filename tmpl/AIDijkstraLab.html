@@ -1,13 +1,13 @@
 {{define "content"}}
 <div class="row">
     <div class="col-md-12" ng-app="myApp">
-        <form ng-controller="formController" name="userForm" ng-submit="submitForm(userForm.$valid)">
+        <form ng-controller="FormController" name="userForm" ng-submit="submitForm(userForm.$valid)">
             <div class="form-group col-md-6">
                 <label>Кількість вершин в графі</label>
                 <input type="number" class="form-control" ng-model="numberOfVertices" ng-change="numbOfVerticesChanged()" min="2" max="20" required>
                 <label>Матриця суміжності: </label>
                 <div class="tableContainer">
-                    <table>
+                    <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th></th>
@@ -18,7 +18,7 @@
                             <tr ng-repeat="i in counter">
                                 <th class="row-label">[[i]]</th>
                                 <td ng-repeat="j in counter">
-                                    <input type="number" class="tableInput" ng-model="cells[calcIndex(i, j)]" ng-maxlength="9" required/>
+                                    <input type="number" class="table-input" ng-model="cells[calcIndex(i, j)]" ng-maxlength="9" required/>
                                 </td>
                             </tr>
                         </tbody>
@@ -39,41 +39,7 @@
                 <svg width="100%" height="100%" viewBox="0 0 1000 1000" id="svgContainer"></svg>
                 <input type="range" ng-model="currentSlide" ng-change="sliderChanged()" min="0" max="[[path.length -1]]" step="1" value="0">
             </div>
+        </form>
     </div>
-    </form>
-
 </div>
-</div>
-
-<style>
-    .tableContainer {
-        overflow: auto;
-    }
-    
-    .tableInput {
-        width: 80pt;
-        height: 20pt;
-        overflow: hidden;
-        padding-left: 2pt;
-        border: none;
-    }
-    
-    input.ng-invalid {
-        border: 1px solid red;
-    }
-    
-    td {
-        border: 1px solid #EEE;
-    }
-    
-    .column-label,
-    .row-label {
-        text-align: center;
-        background: #EEE;
-    }
-    
-    .row-label {
-        width: 20pt;
-    }
-</style>
 {{end}}

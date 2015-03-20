@@ -9,6 +9,7 @@ func main() {
 	//Надання достап до файлів на сервері
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	http.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
+	http.Handle("/img/", http.StripPrefix("/img/", http.FileServer(http.Dir("img"))))
 
 	//Реєстрація обробників
 	http.HandleFunc("/", mainPage)
@@ -16,6 +17,12 @@ func main() {
 	http.HandleFunc("/DSP/lab1Calc", DSPLab1Calc)
 	http.HandleFunc("/DSP/lab2", DSPLab2)
 	http.HandleFunc("/DSP/lab2Calc", DSPLab2Calc)
+	http.HandleFunc("/patternR/lab1", patternRLab1)
+	http.HandleFunc("/AI/DijkstraLab", AIDijkstraLab)
+	http.HandleFunc("/AI/DijkstraLabCalc", AIDijkstraLabCalc)
+	http.HandleFunc("/DSP/lab3", DSPLab3)
+	http.HandleFunc("/DSP/lab3Calc", DSPLab3Calc)
+	http.HandleFunc("/DSP/lab3Calc2", DSPLab3Calc2)
 
 	//Запуск сервера
 	http.ListenAndServe(":8081", nil)
@@ -39,11 +46,17 @@ var lessons = []lesson{
 		"Цифрова обробка сигналів",
 		[]lab{
 			{"Лабораторна робота №1", "/DSP/lab1"},
-			{"Лабораторна робота №2", "/DSP/lab2"}}},
+			{"Лабораторна робота №2", "/DSP/lab2"},
+			{"Лабораторна робота №3", "/DSP/lab3"}}},
 	{
-		"Розпізнаванн образів",
+		"Штучний інтелект",
 		[]lab{
-			{"Лабораторна робота №1", "#"},
+			{"Лабораторна робота №1 (алгоритм Дейкстри)", "/AI/DijkstraLab"},
+			{"Лабораторна робота №2", "#"}}},
+	{
+		"Розпізнавання образів",
+		[]lab{
+			{"Лабораторна робота №1", "/patternR/lab1"},
 			{"Лабораторна робота №2", "#"}}}}
 
 type lab struct {
